@@ -65,6 +65,6 @@ export default {
   height: 0;
   border-color: green transparent transparent transparent;
   border-style: solid;
-  margin: 3px 0 0 5px;
+  margin: 5px 0 0 5px;
 }
 </style>
