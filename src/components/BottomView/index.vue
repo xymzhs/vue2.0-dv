@@ -199,88 +199,139 @@ export default {
       }
     };
   },
-  mounted(){
-      this.renderPieChart()
+  mounted() {
+    this.renderPieChart();
   },
   methods: {
     onCurrentChange(page) {},
     renderPieChart() {
       const mockData = [
-        { legendName: "粉面粥店", value: 10, percent: "10.00%",
-        itemStyle:{
-            color:'#fbd46d'
-        } },
-        { legendName: "早茶店", value: 20, percent: "20.00%",
-        itemStyle:{
-            color:"#f3c623"
-        } },
-        { legendName: "牛排店", value: 30, percent: "30.00%",
-        itemStyle:{
-            color:"#cf7500"
-        } },
-        { legendName: "蛋糕店", value: 15, percent: "15.00%",
-        itemStyle:{
-            color:"#10375c"
-        } },
-        { legendName: "西餐店", value: 5, percent: "5.00%",itemStyle:{
-            color:"#436f8a"
-        } },
-        { legendName: "越菜店", value: 20, percent: "20.00%",
-        itemStyle:{
-            color:"#111d5e"
-        } },
+        {
+          name: "粉面粥店|10.00%",
+          legendName: "粉面粥店",
+          value: 10,
+          percent: "10.00%",
+          itemStyle: {
+            color: "#fbd46d"
+          }
+        },
+        {
+          name: "早茶店|20.00%",
+          legendName: "早茶店",
+          value: 20,
+          percent: "20.00%",
+          itemStyle: {
+            color: "#f3c623"
+          }
+        },
+        {
+          name: "牛排店|30.00%",
+          legendName: "牛排店",
+          value: 30,
+          percent: "30.00%",
+          itemStyle: {
+            color: "#cf7500"
+          }
+        },
+        {
+          name: "蛋糕店|15.00%",
+          legendName: "蛋糕店",
+          value: 15,
+          percent: "15.00%",
+          itemStyle: {
+            color: "#10375c"
+          }
+        },
+        {
+          name: "西餐店|5.00%",
+          legendName: "西餐店",
+          value: 5,
+          percent: "5.00%",
+          itemStyle: {
+            color: "#436f8a"
+          }
+        },
+        {
+          name: "越菜店|20.00%",
+          legendName: "越菜店",
+          value: 20,
+          percent: "20.00%",
+          itemStyle: {
+            color: "#111d5e"
+          }
+        }
       ];
       this.categoryOptions = {
-          title:[{
-              text:'品类分布',
-              textStyle:{
-                  fontSize:14,
-                  color:'#666'
-              },
-              left:20,
-              top:20
+        legend: {
+          type: "scroll",
+          orient: "vertical",
+          height: 250,
+          left: "70%",
+          top: "middle"
+        },
+        title: [
+          {
+            text: "品类分布",
+            textStyle: {
+              fontSize: 14,
+              color: "#666"
+            },
+            left: 20,
+            top: 20
           },
           {
-              text:'累计订单量',
-              subtext:'320',
-              x:'34.5%',
-              y:'42.5%',
-              textAlign:'center',
-              textStyle:{
-                  fontSize:14,
-                  color:'#999'
-              },
-              subtextStyle:{
-                  fontSize:28,
-                  color:'#333'
-              },
-          }],
-          series:[
-              {
-                type:'pie',
-                data:mockData,
-                label:{
-                    normal:{
-                        show:true,
-                        position:'outter',
-                        formatter:function(params){
-                            return params.data.legendName
-                        }
-                    }
-                },
-                center:['35%','50%'],
-                radius:['45%','60%'],
-                labelLine:{
-                    normal:{
-                        length:5,
-                        length2:3,
-                        smooth:true
-                    }
-                },
-                clockwise:true
+            text: "累计订单量",
+            subtext: "320",
+            x: "34.5%",
+            y: "42.5%",
+            textAlign: "center",
+            textStyle: {
+              fontSize: 14,
+              color: "#999"
+            },
+            subtextStyle: {
+              fontSize: 28,
+              color: "#333"
+            }
+          }
+        ],
+        tooltip:{
+            trigger:'item',
+            formtter:function (params) {
+                console.log(params);
+                
+                const str = params.seriesName + '<br />' +params.marker +params.legendName + '<br />' +'数量:' + params.data.value + '<br />' +
+                '占比:' + params.data.percent + '<br />' 
+                return str
+            }
+        },
+        series: [
+          {
+            name:"品类分布",
+            type: "pie",
+            data: mockData,
+            label: {
+              normal: {
+                show: true,
+                position: "outter",
+                formatter: function(params) {
+                  return params.data.legendName;
+                }
               }
-          ]
-      }
+            },
+            center: ["35%", "50%"],
+            radius: ["45%", "60%"],
+            labelLine: {
+              normal: {
+                length: 5,
+                length2: 3,
+                smooth: true
+              }
+            },
+            clockwise: true
+          }
+        ]
+      };
     }
   }
 };
