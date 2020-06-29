@@ -207,7 +207,7 @@ export default {
     renderPieChart() {
       const mockData = [
         {
-          name: "粉面粥店|10.00%",
+          name: "粉面粥店 | 10.00%",
           legendName: "粉面粥店",
           value: 10,
           percent: "10.00%",
@@ -216,7 +216,7 @@ export default {
           }
         },
         {
-          name: "早茶店|20.00%",
+          name: "早茶店 | 20.00%",
           legendName: "早茶店",
           value: 20,
           percent: "20.00%",
@@ -225,7 +225,7 @@ export default {
           }
         },
         {
-          name: "牛排店|30.00%",
+          name: "牛排店 | 30.00%",
           legendName: "牛排店",
           value: 30,
           percent: "30.00%",
@@ -234,7 +234,7 @@ export default {
           }
         },
         {
-          name: "蛋糕店|15.00%",
+          name: "蛋糕店 | 15.00%",
           legendName: "蛋糕店",
           value: 15,
           percent: "15.00%",
@@ -243,7 +243,7 @@ export default {
           }
         },
         {
-          name: "西餐店|5.00%",
+          name: "西餐店 | 5.00%",
           legendName: "西餐店",
           value: 5,
           percent: "5.00%",
@@ -252,7 +252,7 @@ export default {
           }
         },
         {
-          name: "越菜店|20.00%",
+          name: "越菜店 | 20.00%",
           legendName: "越菜店",
           value: 20,
           percent: "20.00%",
@@ -297,10 +297,10 @@ export default {
         ],
         tooltip:{
             trigger:'item',
-            formtter:function (params) {
+            formatter:function (params) {
                 console.log(params);
                 
-                const str = params.seriesName + '<br />' +params.marker +params.legendName + '<br />' +'数量:' + params.data.value + '<br />' +
+                const str = params.seriesName + '<br />' +params.marker +params.data.legendName + '<br />' +'数量:' + params.data.value + '<br />' +
                 '占比:' + params.data.percent + '<br />' 
                 return str
             }
