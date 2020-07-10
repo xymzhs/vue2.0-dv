@@ -20,4 +20,7 @@ html,body,#app {
   margin: 0;
   padding: 0;
 }
+.anchorBL{
+  display: none;
+}
 </style>
